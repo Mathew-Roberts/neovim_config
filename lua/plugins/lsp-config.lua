@@ -1,15 +1,8 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
 		config = function()
 			require("mason").setup({})
-
-			require("mason-tool-installer").setup({
-				ensure_installed = { "mypy", "ruff", "stylua" },
-			})
 		end,
 	},
 	{
@@ -17,6 +10,14 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = { "lua_ls", "pylsp" },
+			})
+		end,
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = { "mypy", "ruff", "stylua", "sonarlint-language-server" },
 			})
 		end,
 	},
