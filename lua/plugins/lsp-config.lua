@@ -17,7 +17,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
 			require("mason-tool-installer").setup({
-				ensure_installed = { "mypy", "ruff", "stylua", "sonarlint-language-server" },
+				ensure_installed = { "mypy", "ruff", "stylua", "sonarlint-language-server", "debugpy" },
 			})
 		end,
 	},
