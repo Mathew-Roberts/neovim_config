@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pylsp" },
+				ensure_installed = { "lua_ls", "pylsp", "jsonls" },
 			})
 		end,
 	},
@@ -17,7 +17,14 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
 			require("mason-tool-installer").setup({
-				ensure_installed = { "mypy", "ruff", "stylua", "sonarlint-language-server", "debugpy" },
+				ensure_installed = {
+					"mypy",
+					"ruff",
+					"stylua",
+					"sonarlint-language-server",
+					"fixjson",
+					"debugpy",
+				},
 			})
 		end,
 	},
@@ -27,10 +34,14 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
 
