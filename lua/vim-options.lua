@@ -8,18 +8,20 @@ vim.g.background = "light"
 vim.opt.swapfile = false
 
 -- Navigate vim panes better
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-vim.keymap.set('n', 'gb', '<c-o>')
-vim.keymap.set('n', 'H', '^')
-vim.keymap.set('n', 'L', '$')
+vim.keymap.set("n", "<c-w>", "<c-u>")
+vim.keymap.set("n", "<c-s>", "<c-d>")
 
-vim.keymap.set('i', 'jj', '<C-c>')
+vim.keymap.set("n", "gb", "<c-o>")
+vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "L", "$")
 
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+vim.keymap.set("i", "jj", "<C-c>")
+
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.wo.number = true
 vim.wo.relativenumber = true
-
