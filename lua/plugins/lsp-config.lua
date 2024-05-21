@@ -24,6 +24,9 @@ return {
 					"sonarlint-language-server",
 					"fixjson",
 					"debugpy",
+					"black",
+					"isort",
+					"flake8",
 				},
 			})
 		end,
@@ -40,6 +43,11 @@ return {
 			})
 			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
+				settings = {
+					basedpyright = {
+						typeCheckingMode = "off",
+					},
+				},
 			})
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,

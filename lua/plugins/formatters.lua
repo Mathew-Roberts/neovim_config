@@ -5,7 +5,6 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "ruff_fix", "ruff_format" },
 				json = { "fixjson" },
 			},
 			format_on_save = {
@@ -18,7 +17,7 @@ return {
 			conform.format({
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 500,
+				timeout_ms = 1500,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
