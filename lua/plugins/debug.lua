@@ -31,6 +31,7 @@ return {
 			vim.keymap.set("n", "<leader>dn", dap.step_over, {})
 			vim.keymap.set("n", "<leader>dup", dap.up, {})
 			vim.keymap.set("n", "<leader>ddn", dap.down, {})
+			vim.keymap.set("n", "<leader>drl", dap.repl.open, {})
 		end,
 	},
 	{

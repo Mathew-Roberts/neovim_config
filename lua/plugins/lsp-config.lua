@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pylsp", "jsonls" },
+				ensure_installed = { "lua_ls", "basedpyright", "jsonls" },
 			})
 		end,
 	},
@@ -24,6 +24,9 @@ return {
 					"sonarlint-language-server",
 					"fixjson",
 					"debugpy",
+					"black",
+					"isort",
+					"flake8",
 				},
 			})
 		end,
@@ -38,15 +41,11 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.pylsp.setup({
+			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
 				settings = {
-					pylsp = {
-						plugins = {
-							pyflakes = { enabled = false },
-							pylint = { enabled = false },
-							pycodestyle = { enabled = false },
-						},
+					basedpyright = {
+						typeCheckingMode = "off",
 					},
 				},
 			})
