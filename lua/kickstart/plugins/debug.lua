@@ -46,14 +46,16 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = 'Debug: Terminate Session' })
+    vim.keymap.set('n', '<leader>dr', dap.restart, { desc = 'Debug: Restart Session' })
+    vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dd', dap.down, { desc = 'Debug: Down CallStack' })
+    vim.keymap.set('n', '<leader>du', dap.up, { desc = 'Debug: Up CallStack' })
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+
+    vim.keymap.set('n', '<F9>', ":lua vim.cmd('vsp' .. '.vscode/launch.json')<CR>", { desc = 'Open VSCode launch configuration file' })
+    vim.keymap.set('n', '<F10>', ':lua require("dap.ext.vscode").load_launchjs(nil,{})<CR>', { desc = 'Reload VSCode launch json' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -86,8 +88,5 @@ return {
 
     local path = '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
     require('dap-python').setup(path)
-
-    local dap_python = require 'dap-python'
-    dap_python.test_runner = 'pytest'
   end,
 }

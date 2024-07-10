@@ -544,7 +544,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -556,9 +556,7 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
 
-      local linters = { 'flake8', 'mypy', 'jsonlint' }
-      local formatters = { 'stylua', 'isort', 'black', 'ruff', 'fixjson' }
-      local extra_installs = vim.list_extend(linters, formatters)
+      local extra_installs = { 'flake8', 'mypy', 'jsonlint', 'stylua', 'isort', 'black', 'ruff', 'fixjson', 'debugpy' }
       vim.list_extend(ensure_installed, extra_installs)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
