@@ -46,16 +46,21 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Into' })
+
     vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = 'Debug: Terminate Session' })
     vim.keymap.set('n', '<leader>dr', dap.restart, { desc = 'Debug: Restart Session' })
-    vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<leader>dd', dap.down, { desc = 'Debug: Down CallStack' })
     vim.keymap.set('n', '<leader>du', dap.up, { desc = 'Debug: Up CallStack' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
 
-    vim.keymap.set('n', '<F9>', ":lua vim.cmd('vsp' .. '.vscode/launch.json')<CR>", { desc = 'Open VSCode launch configuration file' })
-    vim.keymap.set('n', '<F10>', ':lua require("dap.ext.vscode").load_launchjs(nil,{})<CR>', { desc = 'Reload VSCode launch json' })
+    vim.keymap.set('n', '<leader>dj', ":lua vim.cmd('vsp' .. '.vscode/launch.json')<CR>", { desc = 'Open VSCode launch configuration file' })
+    vim.keymap.set('n', '<leader>dl', ':lua require("dap.ext.vscode").load_launchjs(nil,{})<CR>', { desc = 'Reload VSCode launch json' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -78,9 +83,6 @@ return {
         },
       },
     }
-
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
