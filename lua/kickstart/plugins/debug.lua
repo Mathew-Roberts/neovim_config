@@ -88,6 +88,8 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+    vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+
     local path = '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
     require('dap-python').setup(path)
   end,
