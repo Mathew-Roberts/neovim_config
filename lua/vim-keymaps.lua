@@ -37,4 +37,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+local set_var = function()
+  print 'Setting PYTHONPATH and VIRTUAL_ENV for debugging'
+  local pypath = os.getenv 'GUIX_PYTHONPATH' .. ':' .. vim.fn.getcwd() .. '/src'
+  vim.env.PYTHONPATH = pypath
+  vim.env.VIRTUAL_ENV = os.getenv 'GUIX_ENVIRONMENT'
+end
+
+local unset_var = function()
+  print 'Unsetting PYTHONPATH and VIRTUAL_ENV'
+  vim.env.PYTHONPATH = vim.NIL
+  vim.env.VIRTUAL_ENV = vim.NIL
+end
+
+vim.keymap.set('n', '<leader>!', set_var, { desc = 'Setting PYTHONPATH and VIRTUAL_ENV' })
+vim.keymap.set('n', '<leader>@', unset_var, { desc = 'Unsetting PYTHONPATH and VIRTUAL_ENV' })
+
 -- vim: ts=2 sts=2 sw=2 et
